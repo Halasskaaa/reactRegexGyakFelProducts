@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +9,67 @@
     </title>
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
-    <h1>Profil szerkesztés</h1>
-    <form method="post">
-        <label>Usernév:<br>
-            <input
-                type="text"
-                name="username"
-                pattern="^[a-z][a-z\d]*$"
-            >
-        </label>
-        <% if (locals.error) { %>
-            <p><%= locals.error %></p>
-        <% } %>
-        <button type="submit">Módosítás</button>
-    </form>
+    <div class="container">
+        <h1>Profil szerkesztés</h1>
+        <form method="post">
+            
+            <h3>Termékek:</h3>
+            <input id="product01" type="checkbox" name="product01">
+            <label for="product01"><img src="/public/ouabhPink.jpg"></label>
+            <input id="product02" type="checkbox" name="product02">
+            <label for="product02"><img src="/public/ouabhBlue.jpg"></label>
+            <input id="product03" type="checkbox" name="product03">
+            <label for="product03"><img src="/public/ouabhBlack.jpg"></label>
+
+            <label>
+                <h3>Név:</h3>
+                <input type="text" name="name" placeholder="Név">
+            </label>
+
+            <label>
+                <h3>Számlázási cím:</h3>
+                Város:<input type="text" name="city_billingAddress" placeholder="Város">
+                Irányítószám: <input type="text" name="postalCode_billingAddress" placeholder="Irányítószám" pattern="[0-9]{4}" required>
+                Utca:<input type="text" name="street_billingAddress" placeholder="Utca ">
+                Házszám: <input type="text" name="number_billingAddress" placeholder="Házszám">
+            </label>
+
+            <label>
+                <h3>Szállítási cím:</h3>
+                Város:<input type="text" name="city_shippingAddress" placeholder="Város">
+                Irányítószám: <input type="text" name="postalCode_shippingAddress" placeholder="Irányítószám" pattern="[0-9]{4}" required>
+                Utca:<input type="text" name="street_shippingAddress" placeholder="Utca ">
+                Házszám: <input type="text" name="number_shippingAddress" placeholder="Házszám">
+            </label>
+
+            <label>
+                <h3>Telefonszám:</h3>
+                +36 <input type="tel" name="phoneNumber" placeholder="Telefonszám" pattern="[0-9]{9} required">
+            </label>
+
+            <label>
+                <h3>Kuponkód</h3>
+                Kuponkód: <input type="text" name="coupon" placeholder="Kuponkód">
+            </label>
+
+            <label>
+                <h3>Fizetési eszköz:</h3>
+                Bankkártya szám: <input type="text" name="bankcardNumber" placeholder="XXXX-XXXX-XXXX-XXXX" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}">
+                Lejárati dátum: <input type="text" name="expirationDate" placeholder="HH/ÉÉ" pattern="[0-9]{2}/[0-9]{2}">
+                Biztonsági kód: <input type="text" name="securityCode" placeholder="***" pattern="[0-9]{3}">
+            </label>
+
+            <% if (locals.error) { %>
+                <p>
+                    <%= locals.error %>
+                </p>
+                <% } %>
+                    <button type="submit">Elküldés</button>
+        </form>
+    </div>
+
 </body>
+
 </html>
